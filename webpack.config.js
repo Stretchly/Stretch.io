@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 module.exports = {
-    entry: 'index.js',
+    entry: './client/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
@@ -26,11 +26,11 @@ module.exports = {
         }, 
         //at this point install these: npm install -D sass style-loader css-loader sass-loader
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.s?css/,
           use: [
             'style-loader',
             'css-loader',
-            'sass-loader'
+            // 'sass-loader'
           ]
         },
       ]
