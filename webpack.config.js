@@ -48,6 +48,7 @@ module.exports = {
             filename: 'index.html',
             //template: path.resolve(__dirname, './index.html'),//ANOTHER WAY
         }),
+        // new Dotenv(),
     ],
     //declare devServer
     devServer : {

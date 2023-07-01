@@ -12,6 +12,7 @@
   "author": "Alana Herlands, Serena Romano, Diane Moon, Josh Hall, Rodrigo Samour Calderon",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "express": "^4.16.3",
     "mongodb": "^5.6.0",
     "mongoose": "^6.8.0",
@@ -28,6 +29,7 @@
     "babel-loader": "^9.1.2",
     "concurrently": "^8.2.0",
     "css-loader": "^6.8.1",
+    "dotenv-webpack": "^8.0.1",
     "html-webpack-plugin": "^5.5.3",
     "nodemon": "^2.0.22",
     "sass-loader": "^13.3.2",
