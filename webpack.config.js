@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 module.exports = {
-    entry: 'index.js',
+    entry: './client/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
@@ -30,7 +30,7 @@ module.exports = {
           use: [
             'style-loader',
             'css-loader',
-            'sass-loader'
+            // 'sass-loader'
           ]
         },
       ]
