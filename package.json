@@ -11,6 +11,16 @@
   },
   "author": "Alana Herlands, Serena Romano, Diane Moon, Josh Hall, Rodrigo Samour Calderon",
   "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^5.6.0",
+    "mongoose": "^6.8.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-hot-loader": "^4.6.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^6.14.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
