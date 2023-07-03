@@ -7,8 +7,9 @@ const MainContainer = () => {
   // stretchFetch is an async func that accepts as a param a muscle from user input in search bar
   const stretchFetch = async (muscle) => {
     try {
+      // fetch request to server 3000
       const response = await fetch(
-        `/API/exercises?muscle=${muscle}&type=stretching`
+        `/api?muscle=${muscle}&type=stretching`
       );
       stretchesFromAPI = await response.json();
       redirect('/');
