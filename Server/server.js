@@ -37,9 +37,6 @@ app.get('/api', controller.getStretches, (req, res) => {
 //     return res.status(200).json(res.locals.apiRes);
 // });
 
-
-
-
 // global error handler
 app.use((err, req, res, next) => {
     const defaultErr = {
