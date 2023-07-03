@@ -6,6 +6,7 @@
     // having a .env folder for private info like an API key or database log in info is best practice
     // but we didn't have time to implement/didn't need to because of the scope of this project
 
+    // init const StretchController, an object that stores the functionality 
 const StretchController = {
    // The getStretches method is a function that accepts 3 params, req, res, next, and stores the result of a fetch request to the exercises api in our 
    getStretches: async (req, res, next) => {
