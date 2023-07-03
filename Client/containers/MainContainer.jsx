@@ -15,7 +15,13 @@ const MainContainer = () => {
   const stretchFetch = async (muscle) => {
     try {
       // fetch request to server 3000
-      const response = await fetch(`/api?muscle=${muscle}&type=stretching`);
+      const response = await fetch(
+        `https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&type=stretching`,
+        {
+          method: 'GET',
+          headers: { 'X-Api-Key': 'SReYt5aEyGMKzrdSe87wew==boZAObqiLCiQPGrb' },
+        }
+      );
       console.log('running stretchFetch on line 19');
       console.log(response);
       stretchesFromAPI = await response.json();
@@ -45,13 +51,13 @@ const MainContainer = () => {
   const stretchComponents = [];
   // if stretchesFromAPI is not undefined/null, iterate through stretchesFromAPI and push a new TaskRow component with id and key properties
   if (Array.isArray(stretches)) {
-    stretches.forEach((task) => {
+    stretches.forEach((stretch) => {
       stretchComponents.push(
         <Stretch
-          name={'Stretch1'}
-          equipment={'insert equipment from API query here'}
-          difficulty={'insert difficulty from API query here'}
-          instructions={'insert instructions from API query here'}
+          name={stretch.name}
+          equipment={stretch.equipment}
+          difficulty={stretch.difficulty}
+          instructions={stretch.instructions}
         ></Stretch>
       );
     });
@@ -60,7 +66,7 @@ const MainContainer = () => {
   return (
     <div>
       {/* this p tag just helps us see where this MainContainer is being rendered */}
-      <p>This is the MainContainer in Client/containers/MainContainer.jsx</p>
+      {/* <p>This is the MainContainer in Client/containers/MainContainer.jsx</p> */}
       {/* insert search bar here (input textbox and submit button) */}
       <form className='searchBar' onSubmit={handleSubmit}>
         Search:
@@ -75,7 +81,7 @@ const MainContainer = () => {
       </form>
 
       {/* Stretch are individual search results from query to database/API */}
-      {stretchComponents}
+      <div className='stretchBox'>{stretchComponents}</div>
     </div>
   );
 };

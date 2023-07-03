@@ -1,14 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen&family=Space+Mono:ital@1&display=swap');
+
 body {
-  background-color: whitesmoke;
+  background-color: #f3e0ec;
+  margin-left: 20px;
 }
 
 #navBar {
+  margin: 0px;
   display: flex;
   justify-content: space-between;
-  background-color: lightblue;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #361d2e;
+  font-family: 'Sen', sans-serif;
   margin: 0px;
   padding: 5px;
+  color: whitesmoke;
+}
+
+#header-item {
+  display: flex;
+  font-size: 40px;
+  font-family: 'Space Mono', sans-serif;
 }
 
 #flex-item {
@@ -16,6 +27,20 @@ body {
   font-size: larger;
 }
 
+.stretchBox {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .stretchComp {
-  background-color: pink;
+  background-color: #5fb49c;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  max-width: 300px;
+  min-height: 400px;
+  font-family: 'Space-Mono', sans-serif;
 }
