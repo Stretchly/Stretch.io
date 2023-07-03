@@ -27,7 +27,6 @@ app.use(express.urlencoded({ extended: true })); // this will be helpful for str
 // new instance of router
 // const stretchRouter = express.Router();
 
-// may need to change our endpoint??
 // /API/exercises?muscle=${muscle}&type=stretching
 app.get('/api', controller.getStretches, (req, res) => {
     return res.status(200).json(res.locals.apiRes);
