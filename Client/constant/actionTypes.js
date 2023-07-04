@@ -1,0 +1,1 @@
+export const UPDATE_FROM_API = "UPDATE_FROM_API"

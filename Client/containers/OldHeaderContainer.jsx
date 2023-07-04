@@ -8,15 +8,15 @@ import '../styles.css';
 const HeaderContainer = () => {
   // insert any logic for the HeaderContainer here
   return (
-    <div id='navBar'>
+    <div id="navBar">
       <header>
         <h1>Ready to get your stretch on?</h1>
       </header>
-      <div id='flex-item'></div>
-      <div id='flex-item'>
+      <div id="flex-item"></div>
+      <div id="flex-item">
         <p>Stretch.io</p>
       </div>
-      <div id='flex-item'>
+      <div id="flex-item">
         <p>Sign Up / Log in</p>
       </div>
     </div>
