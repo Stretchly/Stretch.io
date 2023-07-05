@@ -33,20 +33,16 @@ app.use(express.urlencoded({ extended: true })); // this will be helpful for str
 // const stretchRouter = express.Router();
 startServer();
 
-// to create user into database // takes in body // username, password
-// respond to get request ot root wiht html
-
+// respond to get request ot root wiht html for welcome screen
 app.get('/', (req, res) => {
-  console.log(
-    path.resolve(__dirname, '../Client/login and signup/signup-login.html')
-  );
   return res
     .status(200)
     .sendFile(
-      path.resolve(__dirname, '../Client/login and signup/signup-login.html')
+      path.resolve(__dirname, '../Client/login and signup/WelcomeScreen.html')
     );
 });
 
+// to create user into database // takes in body // username, password
 app.post('/user', userController.registerUser, (req, res) => {
   return res.status(200).json(res.locals.registeredUser);
 });
