@@ -59,6 +59,9 @@ module.exports = {
       //   target: 'http://localhost:3000'
       "/api": "http://localhost:3000",
     },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     //port: 8080,
   },
 };
