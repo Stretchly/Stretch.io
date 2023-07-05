@@ -78,3 +78,23 @@ describe('User Authentication', () => {
       });
   });
 });
+
+describe('User favorite creation', () => {
+  const username = 'Paul';
+  const password = 'Paul';
+  const favorite = {
+    name: 'HM Running Man Crunch',
+    type: 'cardio',
+    muscle: 'abdominals',
+    equipment: 'body_only',
+    difficulty: 'intermediate',
+    instructions: '',
+  };
+
+  return request(server)
+    .patch('/user/favorite')
+    .send({ username, favorite })
+    .then((response) => {
+      expect(response.body.favorites[0].name).toEqual(favorite.name);
+    });
+});
