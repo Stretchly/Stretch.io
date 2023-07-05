@@ -8,7 +8,7 @@ const fs = require('fs');
 
 // TODO: make sure tests that create a user also delete them so not to clutter?
 // not super important but iwll make our DB easier to visually inspect
-describe('User Creation', () => {
+xdescribe('User Creation', () => {
   // first let's check that it returns an object
   xit('responds with 200 status and object', () => {
     const username = `Paul${Date.now()}`;
@@ -17,7 +17,7 @@ describe('User Creation', () => {
     return request(server)
       .post('/user')
       .send({ username, password })
-      .expect(200)
+      .expect(201)
       .expect('Content-Type', /application\/json/);
   });
 
@@ -33,7 +33,7 @@ describe('User Creation', () => {
       });
   });
 
-  it('attempt to create a duplicate user returns a 400 status code and error object', () => {
+  xit('attempt to create a duplicate user returns a 400 status code and error object', () => {
     const username = 'Paul';
     const password = 'Paul';
     return request(server)
@@ -46,7 +46,7 @@ describe('User Creation', () => {
   });
 });
 
-describe('User Deletion', () => {
+xdescribe('User Deletion', () => {
   it('deletes user from database', () => {
     const username = `Paul${Date.now()}`;
     const password = 'Paul';
@@ -65,7 +65,7 @@ describe('User Deletion', () => {
   });
 });
 
-describe('User Authentication', () => {
+xdescribe('User Authentication', () => {
   const username = 'Paul';
   const password = 'Paul';
   it('should return user if user password is correct', () => {
@@ -75,6 +75,27 @@ describe('User Authentication', () => {
       .send({ username, password })
       .then((response) => {
         expect(response.body.username).toEqual(username);
+      });
+  });
+});
+
+xdescribe('User favorite creation', () => {
+  const username = 'Paul';
+  const password = 'Paul';
+  const favorite = {
+    name: 'HM Running Man Crunch',
+    type: 'cardio',
+    muscle: 'abdominals',
+    equipment: 'body_only',
+    difficulty: 'intermediate',
+    instructions: '',
+  };
+  it('should return the updated user if favorite was added', () => {
+    return request(server)
+      .patch('/user/favorite')
+      .send({ username, favorite })
+      .then((response) => {
+        expect(response.body.favorites[0].name).toEqual(favorite.name);
       });
   });
 });

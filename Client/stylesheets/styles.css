@@ -1,5 +1,15 @@
-body {
+* {
+  margin: none;
+  padding: none;
+}
+
+/* containers */
+.mainApp {
   background-color: whitesmoke;
+  font-family: sans-serif;
+}
+.stretchCont {
+  border: 2px solid #000;
 }
 
 #navBar {
@@ -16,6 +26,7 @@ body {
   font-size: larger;
 }
 
-.stretchComp {
+.stretchCard {
   background-color: pink;
+  border: 2px solid #fff;
 }

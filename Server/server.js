@@ -11,14 +11,17 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const path = require('path');
-const controller = require('./controller/ExerciseController.js');
-const startServer = require('./database/dbConnection.js');
-const userController = require('./controller/UserController.js');
+const path = require("path");
+const controller = require("./controller/ExerciseController.js");
+const startServer = require("./database/dbConnection.js");
+const userController = require("./controller/UserController.js");
+const cors = require('cors')
 
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
+app.use(cors());
 // if you ever have a form on your frontend, express.urlencoded
 app.use(express.urlencoded({ extended: true })); // this will be helpful for stringifying a form req from an .html file
 
@@ -40,7 +43,7 @@ app.post('/user', userController.registerUser, (req, res) => {
 
 // delete user from database
 app.delete('/user', userController.deleteUser, (req, res) =>
-  res.status(200).json(res.locals.deletedUser)
+  res.status(201).json(res.locals.deletedUser)
 );
 
 // TODO:
@@ -48,12 +51,18 @@ app.delete('/user', userController.deleteUser, (req, res) =>
 
 // to authenticate user based on input username and password
 app.get('/login', userController.authUser, (req, res) => {
-  return res.status(200).json(res.locals.user);
+  return res.status(202).json(res.locals.user);
 });
 
 // /API/exercises?muscle=${muscle}&type=stretching
 app.get('/api', controller.getStretches, (req, res) => {
-  return res.status(200).json(res.locals.apiRes);
+  return res.status(203).json(res.locals.apiRes);
+});
+
+// add a favorite
+app.patch('/user/favorite', userController.addFavorite, (req, res) => {
+  console.log('in server.js, res.locals.updatedUser: ', res.locals.updatedUser);
+  return res.status(202).json(res.locals.updatedUser);
 });
 
 // app.get('/api', controller.getExercise, (req, res) => {
