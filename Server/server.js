@@ -38,6 +38,14 @@ app.get('/', (req, res) => {
   return res
     .status(200)
     .sendFile(
+      path.resolve(__dirname, '../Client/login and signup/signup-login.html')
+    );
+});
+
+app.get('/landingpage', (req, res) => {
+  return res
+    .status(200)
+    .sendFile(
       path.resolve(__dirname, '../Client/login and signup/WelcomeScreen.html')
     );
 });
