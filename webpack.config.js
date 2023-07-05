@@ -7,7 +7,7 @@ module.exports = {
   entry: "./client/index.js",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    filename: "bundle.js"
   },
   mode: process.env.NODE_ENV,
   module: {
@@ -19,7 +19,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ["@babel/preset-env", "@babel/preset-react"]
           },
         },
       },
@@ -27,8 +27,8 @@ module.exports = {
       {
         test: /\.s?css/,
         use: [
-          "style-loader",
-          "css-loader",
+          'style-loader',
+          'css-loader'
           // 'sass-loader'
         ],
       },
@@ -43,8 +43,8 @@ module.exports = {
   //npm install
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./client/index.html",
-      filename: "index.html",
+      template: './client/index.html',
+      filename: 'index.html'
       //template: path.resolve(__dirname, './index.html'),//ANOTHER WAY
     }),
     // new Dotenv(),
@@ -57,11 +57,11 @@ module.exports = {
     proxy: {
       //   context: ['/character','/characters'],
       //   target: 'http://localhost:3000'
-      "/api": "http://localhost:3000",
+      "/api": "http://localhost:3000"
     },
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin' : '*'
     },
-    //port: 8080,
+    port: 8080
   },
 };
