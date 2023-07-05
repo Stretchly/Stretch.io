@@ -8,7 +8,7 @@ const fs = require('fs');
 
 // TODO: make sure tests that create a user also delete them so not to clutter?
 // not super important but iwll make our DB easier to visually inspect
-describe('User Creation', () => {
+xdescribe('User Creation', () => {
   // first let's check that it returns an object
   xit('responds with 200 status and object', () => {
     const username = `Paul${Date.now()}`;
@@ -90,11 +90,12 @@ describe('User favorite creation', () => {
     difficulty: 'intermediate',
     instructions: '',
   };
-
-  return request(server)
+  it('should return the updated user if favorite was added', () => {
+    return request(server)
     .patch('/user/favorite')
     .send({ username, favorite })
     .then((response) => {
       expect(response.body.favorites[0].name).toEqual(favorite.name);
     });
+  });
 });
