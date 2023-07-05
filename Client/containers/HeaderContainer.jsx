@@ -13,12 +13,12 @@ import React from 'react';
 import * as actions from '../actionCreator/actionCreator.js';
 
 const HeaderContainer = () => {
-    return (
-        <div className="appHeaderBox">
-        <h4 className="mainHeader">Stretch</h4>
-        <button>Logout</button>
-        </div>
-    );
-}
+  return (
+    <div className='appHeaderBox'>
+      <h4 className='mainHeader'>Stretch</h4>
+      <button>Logout</button>
+    </div>
+  );
+};
 
 export default HeaderContainer;

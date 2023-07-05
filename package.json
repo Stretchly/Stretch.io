@@ -9,6 +9,14 @@
     "build": "NODE_ENV=production webpack",
     "dev": "concurrently --kill-others \"nodemon server/server.js\" \"NODE_ENV=development webpack serve --open\""
   },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/mock.js"
+    }
+  },
   "author": "Alana Herlands, Serena Romano, Diane Moon, Josh Hall, Rodrigo Samour Calderon",
   "license": "ISC",
   "dependencies": {
@@ -30,9 +38,11 @@
     "redux": "^4.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
+    "@babel/core": "^7.22.6",
+    "@babel/preset-env": "^7.22.6",
     "@babel/preset-react": "^7.22.5",
+    "@testing-library/react": "^14.0.0",
+    "babel-jest": "^29.6.0",
     "babel-loader": "^9.1.2",
     "concurrently": "^8.2.0",
     "css-loader": "^6.8.1",

@@ -53,8 +53,8 @@ const MenuContainer = (prop) => {
         <option value="triceps">Triceps</option>
       </select>
       <select
-        className="difficulty"
-        id="difficulty"
+        className='difficulty'
+        id='difficulty'
         onChange={() => refreshExercises()}
       >
         <option value='null'>Select a difficulty</option>
