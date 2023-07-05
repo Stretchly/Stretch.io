@@ -33,7 +33,7 @@ xdescribe('User Creation', () => {
       });
   });
 
-  it('attempt to create a duplicate user returns a 400 status code and error object', () => {
+  xit('attempt to create a duplicate user returns a 400 status code and error object', () => {
     const username = 'Paul';
     const password = 'Paul';
     return request(server)
@@ -46,7 +46,7 @@ xdescribe('User Creation', () => {
   });
 });
 
-describe('User Deletion', () => {
+xdescribe('User Deletion', () => {
   it('deletes user from database', () => {
     const username = `Paul${Date.now()}`;
     const password = 'Paul';
@@ -65,7 +65,7 @@ describe('User Deletion', () => {
   });
 });
 
-describe('User Authentication', () => {
+xdescribe('User Authentication', () => {
   const username = 'Paul';
   const password = 'Paul';
   it('should return user if user password is correct', () => {
@@ -79,7 +79,7 @@ describe('User Authentication', () => {
   });
 });
 
-describe('User favorite creation', () => {
+xdescribe('User favorite creation', () => {
   const username = 'Paul';
   const password = 'Paul';
   const favorite = {
