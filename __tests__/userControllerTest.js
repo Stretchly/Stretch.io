@@ -17,7 +17,7 @@ xdescribe('User Creation', () => {
     return request(server)
       .post('/user')
       .send({ username, password })
-      .expect(200)
+      .expect(201)
       .expect('Content-Type', /application\/json/);
   });
 
@@ -92,10 +92,10 @@ describe('User favorite creation', () => {
   };
   it('should return the updated user if favorite was added', () => {
     return request(server)
-    .patch('/user/favorite')
-    .send({ username, favorite })
-    .then((response) => {
-      expect(response.body.favorites[0].name).toEqual(favorite.name);
-    });
+      .patch('/user/favorite')
+      .send({ username, favorite })
+      .then((response) => {
+        expect(response.body.favorites[0].name).toEqual(favorite.name);
+      });
   });
 });
