@@ -35,12 +35,12 @@ startServer();
 
 app.post('/user', userController.registerUser, (req, res) => {
   console.log();
-  return res.status(200).json(res.locals.registeredUser);
+  return res.status(201).json(res.locals.registeredUser);
 });
 
 // delete user from database
 app.delete('/user', userController.deleteUser, (req, res) =>
-  res.status(200).json(res.locals.deletedUser)
+  res.status(202).json(res.locals.deletedUser)
 );
 
 // TODO:
@@ -48,18 +48,23 @@ app.delete('/user', userController.deleteUser, (req, res) =>
 
 // to authenticate user based on input username and password
 app.get('/login', userController.authUser, (req, res) => {
-  return res.status(200).json(res.locals.user);
+  return res.status(202).json(res.locals.user);
 });
 
 // /API/exercises?muscle=${muscle}&type=stretching
 app.get('/api', controller.getStretches, (req, res) => {
-  return res.status(200).json(res.locals.apiRes);
+  return res.status(203).json(res.locals.apiRes);
 });
 
 // add a favorite
 app.patch('/user/favorite', userController.addFavorite, (req, res) => {
   console.log('in server.js, res.locals.updatedUser: ', res.locals.updatedUser);
-  return res.status(200).json(res.locals.updatedUser);
+  return res.status(202).json(res.locals.updatedUser);
+});
+
+// delete a favorite
+app.delete('/user/favorite', userController.deleteFavorite, (req, res) => {
+  return res.status(202).json();
 });
 
 // app.get('/api', controller.getExercise, (req, res) => {
