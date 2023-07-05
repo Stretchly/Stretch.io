@@ -3,7 +3,7 @@
  *
  * @module
  * @author Eivind Del Fierro, Morah Geist
- * @date 07/03/23
+ * @date 07/2023
  * @description drop down menu item for selecting stretch target muscle group and difficulty
  * question: can we pass the data from the drop down menus in menu container to the stretch container to render the stretch components? menu container and stretch container are siblings, do we need a parent to hold both containers?
  *
@@ -17,22 +17,20 @@ import * as actions from '../actionCreator/actionCreator.js';
 const MenuContainer = (prop) => {
   const dispatch = useDispatch();
 
-    const refreshExercises = () => {
+    const refreshExercises = async () => {
       const muscle = document.getElementById('muscle').value;
       const difficulty = document.getElementById('difficulty').value;
-      fetch(
+      await fetch(
         `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
       )
-        // .then(data => json(data))
-        .then( data => console.log(data) )
-        .catch( error => console.log('error'))
-        // .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
-        // .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
+        .then(data => data.json())
+        .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
+        .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
     };
 
   return (
     <div>
-      <select className="muscle" id="muscle" onChange={() => null}>
+      <select className="muscle" id="muscle" onChange={() => refreshExercises()}>
         <option value="abdominals">Abdominals</option>
         <option value="abductors">Abductors</option>
         <option value="adductors">Adductors</option>
@@ -53,7 +51,7 @@ const MenuContainer = (prop) => {
       <select
         className="difficulty"
         id="difficulty"
-        onChange={() => null}
+        onChange={() => refreshExercises()}
       >
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
