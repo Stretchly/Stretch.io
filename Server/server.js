@@ -32,9 +32,19 @@ app.use(express.urlencoded({ extended: true })); // this will be helpful for str
 startServer();
 
 // to create user into database // takes in body // username, password
+
 app.post("/user", userController.registerUser, (req, res) => {
-  return res.status(200).json(res.locals.user);
+  return res.status(200).json(res.locals.registeredUser);
 });
+
+// delete user from database
+app.delete("/user", userController.deleteUser, (req, res) =>
+  res.status(200).json(res.locals.deletedUser)
+);
+
+// TODO:
+// get user from database
+
 // to authenticate user based on input username and password
 app.get("/login", userController.authUser, (req, res) => {
   return res.status(200).json(res.locals.users);
