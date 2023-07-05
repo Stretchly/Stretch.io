@@ -14,7 +14,7 @@ const StretchController = {
       const { muscle, name, type, difficulty } = req.query;
       //console.log(req.query);
       // create API request string from query parameters
-      let apiString = "https://api.api-ninjas.com/v1/exercises?";
+      let apiString = 'https://api.api-ninjas.com/v1/exercises?';
 
       // allow for muscle group input
       if (muscle) apiString += `muscle=${muscle}`;
@@ -28,20 +28,35 @@ const StretchController = {
 
       // init const apiRes as output from api request
       const apiRes = await fetch(apiString, {
-        method: "GET",
-        headers: { "X-Api-Key": apiKEY },
+        method: 'GET',
+        headers: { 'X-Api-Key': apiKEY },
       }).then((response) => response.json());
       // store apiRes in res.locals
-      res.locals.apiRes = apiRes;
       //console.log(apiRes);
+      res.locals.apiRes = [];
+      const ex_names = {};
+
+      // filter out duplicate exercises in api response
+      apiRes.forEach((ex) => {
+        //console.log('checking: ', ex);
+        if (!(ex.name in ex_names)) {
+          //console.log('here', ex.name, ex_names, res.locals.apiRes);
+          res.locals.apiRes.push(ex);
+          ex_names[ex.name] = true;
+        }
+      });
+
+      // sort api response exercises alphabetically
+      res.locals.apiRes.sort((ex1, ex2) => (ex1.name > ex2.name ? 1 : -1));
+
       // return the invocation of next to move to next middleware
       return next();
     } catch (error) {
       const errorObject = {
         // log to developer
-        log: "Error occurred in StretchController.GetExercise",
+        log: 'Error occurred in StretchController.GetExercise',
         // message to client
-        message: { error: "An error has occurred in getting an exericse" },
+        message: { error: 'An error has occurred in getting an exericse' },
         status: 400,
       };
       // pass error object to global error handler
