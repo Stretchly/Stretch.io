@@ -11,10 +11,11 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App.jsx';
-import './stylesheets/styles.css';
 import { Provider } from 'react-redux';
 import store from './store.js';
+import App from './App.jsx';
+import './stylesheets/styles.css';
+
 // import { createRoot } from 'react-dom/client';
 
 // render app from App.jsx file on the html element with id of app in the index.html page
