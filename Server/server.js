@@ -42,9 +42,9 @@ app.post('/user', userController.registerUser, (req, res) => {
 });
 
 // delete user from database
-app.delete('/user', userController.deleteUser, (req, res) =>
-  res.status(202).json(res.locals.deletedUser)
-);
+app.delete('/user', userController.deleteUser, (req, res) => {
+  return res.status(202).json(res.locals.deletedUser);
+});
 
 // TODO:
 // get user from database
@@ -67,7 +67,7 @@ app.patch('/user/favorite', userController.addFavorite, (req, res) => {
 
 // delete a favorite
 app.delete('/user/favorite', userController.deleteFavorite, (req, res) => {
-  return res.status(202).json();
+  return res.status(202).json(res.locals.updatedUserDeletedFavorite);
 });
 
 // app.get('/api', controller.getExercise, (req, res) => {
