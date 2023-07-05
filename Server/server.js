@@ -1,6 +1,6 @@
 // goal: set up express routing
 // enviroment variable configuration
-require("dotenv").config();
+require('dotenv').config();
 // steps
 // create a controller.js
 // this will contain routers
@@ -9,12 +9,12 @@ require("dotenv").config();
 // define endpoints and actions
 // add listener for PORT
 
-const express = require("express");
+const express = require('express');
 const app = express();
-const path = require("path");
-const controller = require("./controller/ExerciseController.js");
-const startServer = require("./database/dbConnection.js");
-const userController = require("./controller/UserController.js");
+const path = require('path');
+const controller = require('./controller/ExerciseController.js');
+const startServer = require('./database/dbConnection.js');
+const userController = require('./controller/UserController.js');
 
 const PORT = 3000;
 
@@ -33,12 +33,13 @@ startServer();
 
 // to create user into database // takes in body // username, password
 
-app.post("/user", userController.registerUser, (req, res) => {
+app.post('/user', userController.registerUser, (req, res) => {
+  console.log();
   return res.status(200).json(res.locals.registeredUser);
 });
 
 // delete user from database
-app.delete("/user", userController.deleteUser, (req, res) =>
+app.delete('/user', userController.deleteUser, (req, res) =>
   res.status(200).json(res.locals.deletedUser)
 );
 
@@ -46,12 +47,12 @@ app.delete("/user", userController.deleteUser, (req, res) =>
 // get user from database
 
 // to authenticate user based on input username and password
-app.get("/login", userController.authUser, (req, res) => {
-  return res.status(200).json(res.locals.users);
+app.get('/login', userController.authUser, (req, res) => {
+  return res.status(200).json(res.locals.user);
 });
 
 // /API/exercises?muscle=${muscle}&type=stretching
-app.get("/api", controller.getStretches, (req, res) => {
+app.get('/api', controller.getStretches, (req, res) => {
   return res.status(200).json(res.locals.apiRes);
 });
 
@@ -63,16 +64,16 @@ app.get("/api", controller.getStretches, (req, res) => {
 app.use(() =>
   next({
     status: 404,
-    log: "Route not found",
+    log: 'Route not found',
   })
 );
 
 // global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: "Express error handler caught unknown middleware error",
+    log: 'Express error handler caught unknown middleware error',
     status: 400,
-    message: { err: "An error occurred" },
+    message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
