@@ -1,6 +1,6 @@
 // goal: set up express routing
 // enviroment variable configuration
-require("dotenv").config();
+require('dotenv').config();
 // steps
 // create a controller.js
 // this will contain routers
@@ -9,7 +9,7 @@ require("dotenv").config();
 // define endpoints and actions
 // add listener for PORT
 
-const express = require("express");
+const express = require('express');
 const app = express();
 const path = require("path");
 const controller = require("./controller/ExerciseController.js");
@@ -20,6 +20,7 @@ const cors = require('cors')
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
 app.use(cors());
 // if you ever have a form on your frontend, express.urlencoded
 app.use(express.urlencoded({ extended: true })); // this will be helpful for stringifying a form req from an .html file
@@ -35,26 +36,33 @@ startServer();
 
 // to create user into database // takes in body // username, password
 
-app.post("/user", userController.registerUser, (req, res) => {
+app.post('/user', userController.registerUser, (req, res) => {
+  console.log();
   return res.status(200).json(res.locals.registeredUser);
 });
 
 // delete user from database
-app.delete("/user", userController.deleteUser, (req, res) =>
-  res.status(200).json(res.locals.deletedUser)
+app.delete('/user', userController.deleteUser, (req, res) =>
+  res.status(201).json(res.locals.deletedUser)
 );
 
 // TODO:
 // get user from database
 
 // to authenticate user based on input username and password
-app.get("/login", userController.authUser, (req, res) => {
-  return res.status(200).json(res.locals.users);
+app.get('/login', userController.authUser, (req, res) => {
+  return res.status(202).json(res.locals.user);
 });
 
 // /API/exercises?muscle=${muscle}&type=stretching
-app.get("/api", controller.getStretches, (req, res) => {
-  return res.status(200).json(res.locals.apiRes);
+app.get('/api', controller.getStretches, (req, res) => {
+  return res.status(203).json(res.locals.apiRes);
+});
+
+// add a favorite
+app.patch('/user/favorite', userController.addFavorite, (req, res) => {
+  console.log('in server.js, res.locals.updatedUser: ', res.locals.updatedUser);
+  return res.status(202).json(res.locals.updatedUser);
 });
 
 // app.get('/api', controller.getExercise, (req, res) => {
@@ -65,16 +73,16 @@ app.get("/api", controller.getStretches, (req, res) => {
 app.use(() =>
   next({
     status: 404,
-    log: "Route not found",
+    log: 'Route not found',
   })
 );
 
 // global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: "Express error handler caught unknown middleware error",
+    log: 'Express error handler caught unknown middleware error',
     status: 400,
-    message: { err: "An error occurred" },
+    message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
