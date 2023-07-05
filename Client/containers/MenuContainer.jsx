@@ -23,9 +23,10 @@ const MenuContainer = (prop) => {
       fetch(
         `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
       )
-        .then((data) => json(data))
-        .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
-        .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
+        .then(data => json(data))
+        .then( data => console.log(data) )
+        // .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
+        // .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
     };
 
   return (
