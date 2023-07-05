@@ -46,6 +46,34 @@ userController.deleteUser = async (req, res, next) => {
   return next();
 };
 
+// Add a favorite
+// favorite is passed in through the req.body
+    //Find the user with that username. 
+    //Push onto their favorites array the current favorites array. 
+    //Update the current favorites array. 
+userController.addFavorite = async (req, res, next) => {
+  const { username, favorite } = req.body;
+  console.log("entering add favorite middleware");
+
+  try {
+    await User.findOneAndUpdate(
+      { username: username }, 
+      //push the favorite onto the favorites array
+      { $push: { favorites: favorite } }, 
+      { new: true }
+      ).then((updatedUser) => {
+        res.locals.updatedUser = updatedUser;
+      });
+  } catch (err) {
+    return next({
+      status: 401,
+      log: "error in addFavorite middleware",
+      error: err,
+    });
+  }
+  return next();
+};
+
 // find a user
 // mostly for  testing deletion
 // username must be passed in request body

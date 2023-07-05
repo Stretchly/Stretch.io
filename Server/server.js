@@ -55,6 +55,11 @@ app.get("/api", controller.getStretches, (req, res) => {
   return res.status(200).json(res.locals.apiRes);
 });
 
+// add a favorite
+app.patch('/user/favorite', userController.addFavorite, (req, res) => {
+  return res.status(200).json(res.locals.updatedUser);
+});
+
 // app.get('/api', controller.getExercise, (req, res) => {
 //     return res.status(200).json(res.locals.apiRes);
 // });
