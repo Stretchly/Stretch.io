@@ -15,10 +15,12 @@ const path = require("path");
 const controller = require("./controller/ExerciseController.js");
 const startServer = require("./database/dbConnection.js");
 const userController = require("./controller/UserController.js");
+const cors = require('cors')
 
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
 // if you ever have a form on your frontend, express.urlencoded
 app.use(express.urlencoded({ extended: true })); // this will be helpful for stringifying a form req from an .html file
 
