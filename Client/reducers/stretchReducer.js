@@ -12,7 +12,10 @@ import * as types from '../constant/actionTypes.js';
 
 const initialState = {
   exercisesFromAPI: [],
-  loggedInUser: ''
+  loggedInUser: '',
+  favorites: [],
+  muscle: '',
+  difficulty: ''
 };
 
 const stretchReducer = (state = initialState, action) => {
@@ -25,12 +28,18 @@ const stretchReducer = (state = initialState, action) => {
     // Logs user on
     case types.USER_LOG_ON: {
       // get authentication status of user
+      return {...state, loggedInUser: action.payload.username, favorites : action.payload.favorites}
 
     }
 
     // Logs user off
     case types.USER_LOG_OFF: {
       return {...state, loggedInUser : ''}
+    }
+
+    case types.UPDATE_MUSCLE_DIFFICULTY: {
+      const [muscle, difficulty] = action.payload;
+      return {...state, muscle:muscle, difficulty,difficulty}
     }
     default:
       return state;
