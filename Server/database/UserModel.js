@@ -21,11 +21,14 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 userSchema.pre("save", async function (next) {
+  // only run if the password was modified
+  // this allows for a username change / password change to be separate
   if (!this.isModified("password")) {
     next();
   }
-
+  // generate salt for encryption
   const salt = await bcrypt.genSalt(10);
+  // encrypt password
   this.password = await bcrypt.hash(this.password, salt);
 });
 
