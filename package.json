@@ -12,11 +12,8 @@
   "author": "Alana Herlands, Serena Romano, Diane Moon, Josh Hall, Rodrigo Samour Calderon",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "@reduxjs/toolkit": "^1.9.5",
-=======
     "bcrypt": "^5.1.0",
->>>>>>> 8d256d3c44c5e09b02bac2139f40470df6c5f1f3
     "dotenv": "^16.3.1",
     "express": "^4.16.3",
     "express-async-handler": "^1.2.0",
