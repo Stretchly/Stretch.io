@@ -13,9 +13,9 @@ const login = () => {
         const loginObj = {
             username : un,
             password : pw
-        }
+        };
 
-        console.log(loginObj)
+        console.log(loginObj);
 
         fetch('http://localhost:3000/login', {
             method: 'POST',
@@ -25,15 +25,15 @@ const login = () => {
             .then( data => data.json())
             .then( data => {
                 if (!data.err) {
-                    console.log(data)
+                    console.log(data);
                     // Do something
                     // change logged in user state with the returned userState
-                    dispatch(actions.updateUSER_LOG_ON(data))
+                    dispatch(actions.updateUSER_LOG_ON(data));
 
                     // disable opacity
                     document.getElementById("overlay").style.display = 'none'
                 } else {
-                    alert(data.err)
+                    alert(data.err);
                 }
             })
             .catch(error => alert(error))
