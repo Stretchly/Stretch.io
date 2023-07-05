@@ -24,13 +24,17 @@ const MenuContainer = (prop) => {
         `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
       )
         .then(data => data.json())
-        .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
+        .then((data) => {
+          dispatch(actions.updateDifficultyAndMuscle([muscle, difficulty]))
+          return dispatch(actions.updateExercisesFromAPI(data))
+        })
         .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
     };
 
   return (
     <div>
       <select className="muscle" id="muscle" onChange={() => refreshExercises()}>
+        <option value='null'>Select a muscle</option>
         <option value="abdominals">Abdominals</option>
         <option value="abductors">Abductors</option>
         <option value="adductors">Adductors</option>
@@ -53,6 +57,7 @@ const MenuContainer = (prop) => {
         id="difficulty"
         onChange={() => refreshExercises()}
       >
+        <option value='null'>Select a difficulty</option>
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
         <option value="expert">Expert</option>
