@@ -1,10 +1,22 @@
+/**
+ * ************************************
+ *
+ * @module  Stretch
+ * @author Eivind Del Fierro, Morah Geist
+ * @date 07/2023
+ * @description stretch box
+ *
+ * ************************************
+ */
+
 import React from 'react';
 
 const Stretch = (props) => {
+  props = props.exercises;
   // insert any logic for the Stretch here
   // return stretch component with passed-in props from query to server
   return (
-    <div className='stretchComp'>
+    <div className='stretchCard'>
       <h3>{props.name}</h3>
       <ul>
         <li>
