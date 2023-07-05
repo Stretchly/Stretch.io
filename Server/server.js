@@ -64,7 +64,7 @@ app.delete('/user', userController.deleteUser, (req, res) =>
 // get user from database
 
 // to authenticate user based on input username and password
-app.get('/login', userController.authUser, (req, res) => {
+app.post('/login', userController.authUser, (req, res) => {
   return res.status(202).json(res.locals.user);
 });
 
