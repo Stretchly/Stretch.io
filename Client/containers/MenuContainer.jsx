@@ -17,24 +17,28 @@ import * as actions from '../actionCreator/actionCreator.js';
 const MenuContainer = (prop) => {
   const dispatch = useDispatch();
 
-    const refreshExercises = async () => {
-      const muscle = document.getElementById('muscle').value;
-      const difficulty = document.getElementById('difficulty').value;
-      await fetch(
-        `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
-      )
-        .then(data => data.json())
-        .then((data) => {
-          dispatch(actions.updateDifficultyAndMuscle([muscle, difficulty]))
-          return dispatch(actions.updateExercisesFromAPI(data))
-        })
-        .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
-    };
+  const refreshExercises = async () => {
+    const muscle = document.getElementById('muscle').value;
+    const difficulty = document.getElementById('difficulty').value;
+    await fetch(
+      `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        dispatch(actions.updateDifficultyAndMuscle([muscle, difficulty]));
+        return dispatch(actions.updateExercisesFromAPI(data));
+      })
+      .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
+  };
 
   return (
     <div>
-      <select className="muscle" id="muscle" onChange={() => refreshExercises()}>
-        <option value='null'>Select a muscle</option>
+      <select
+        className="muscle"
+        id="muscle"
+        onChange={() => refreshExercises()}
+      >
+        <option value="null">Select a muscle</option>
         <option value="abdominals">Abdominals</option>
         <option value="abductors">Abductors</option>
         <option value="adductors">Adductors</option>
@@ -53,15 +57,16 @@ const MenuContainer = (prop) => {
         <option value="triceps">Triceps</option>
       </select>
       <select
-        className='difficulty'
-        id='difficulty'
+        className="difficulty"
+        id="difficulty"
         onChange={() => refreshExercises()}
       >
-        <option value='null'>Select a difficulty</option>
+        <option value="null">Select a difficulty</option>
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
         <option value="expert">Expert</option>
       </select>
+      <button className="favBtn">Favorites</button>
     </div>
   );
 };
