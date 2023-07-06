@@ -36,17 +36,17 @@ const login = () => {
           alert(data.err);
         }
       })
-      .catch((error) => alert(error));
+      .catch((error) => alert('Invalid Username/Password'));
   };
 
   return (
     <div>
       <form>
-        <input type="text" id="usernameLogin" placeholder="Username"></input>
+        <input type='text' id='usernameLogin' placeholder='Username'></input>
         <input
-          type="password"
-          id="passwordLogin"
-          placeholder="Password"
+          type='password'
+          id='passwordLogin'
+          placeholder='Password'
         ></input>
         <button onClick={(event) => loginFunc(event)}>Login</button>
       </form>
