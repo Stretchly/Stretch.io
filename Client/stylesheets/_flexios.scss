@@ -30,8 +30,7 @@
 }
 /* dropdown menu */
 .muscle,
-.difficulty,
-.favorites {
+.difficulty {
   background-color: $light;
   color: $darker;
   padding: 10px;
@@ -90,4 +89,15 @@ li:last-child {
   -webkit-user-select: none;
   touch-action: manipulation;
   max-height: 40px;
+}
+.favBtn {
+  background-color: $light;
+  color: $darker;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 10px;
 }

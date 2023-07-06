@@ -40,10 +40,19 @@ const StretchContainer = () => {
     );
   }
 
+  if (difficulty === 'null') {
+    return (
+      <div>
+        <p>No {muscle} exercises found!</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <p>
-        No {difficulty} {muscle} exercises found!
+        No {difficulty !== 'null' ? difficulty : null}{' '}
+        {muscle !== 'null' ? muscle : null} exercises found!
       </p>
     </div>
   );
