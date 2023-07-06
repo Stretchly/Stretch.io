@@ -6,12 +6,14 @@ import App from '../Client/App.jsx';
 import { Store } from '../Client/store.js';
 import { Provider } from 'react-redux';
 import { render, screen, waitFor } from '@testing-library/react';
+import renderer from 'react-test-renderer';
+
 
 describe('test for menuContainer.jsx', () => {
   // beforeAll(() => {
   //   const renderedMenuContainer = render(<menuContainer/>);
   // })
-  test('menuContainer.js renders on the page', () => {
+  it('menuContainer.js renders on the page', () => {
     const tree = renderer
       .create(<menuContainer/>)
       .toJSON();
