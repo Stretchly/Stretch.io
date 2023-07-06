@@ -16,20 +16,18 @@ import Stretch from '../components/Stretch.jsx';
 
 // can pass in props and prop drill if you want
 const StretchContainer = () => {
-  const stretchList = useSelector((state) => state.stretch.exercisesFromAPI)
+  const stretchList = useSelector((state) => state.stretch.exercisesFromAPI);
 
   const stretchArr = [];
 
   if (stretchList.length) {
-    for (let i = 0; i < stretchList.length; i++){
+    for (let i = 0; i < stretchList.length; i++) {
       const item = stretchList[i];
-      stretchArr.push(
-        <Stretch exercises={item}/>
-      )
+      stretchArr.push(<Stretch exercises={item} />);
     }
   }
-  
-  return <div className='stretchCont'>{stretchArr}</div>;
+
+  return <div className="stretchCont">{stretchArr}</div>;
 };
 
 export default StretchContainer;

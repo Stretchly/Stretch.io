@@ -1,13 +1,13 @@
 // require the path
-const path = require("path");
+const path = require('path');
 // require html webpack plugin
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./client/index.js",
+  entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js',
   },
   mode: process.env.NODE_ENV,
   module: {
@@ -17,20 +17,16 @@ module.exports = {
         exclude: /node_modules/,
         //at this point install these: npm install -D babel-loader @babel/core @babel/preset-env @babel/preset-react
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
       //at this point install these: npm install -D sass style-loader css-loader sass-loader
       {
         test: /\.s?css/,
-        use: [
-          'style-loader',
-          'css-loader'
-          // 'sass-loader'
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -44,7 +40,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './client/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
       //template: path.resolve(__dirname, './index.html'),//ANOTHER WAY
     }),
     // new Dotenv(),
@@ -52,16 +48,16 @@ module.exports = {
   //declare devServer
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "build"),
+      directory: path.resolve(__dirname, 'build'),
     },
     proxy: {
       //   context: ['/character','/characters'],
       //   target: 'http://localhost:3000'
-      "/api": "http://localhost:3000"
+      '/api': 'http://localhost:3000',
     },
     headers: {
-      'Access-Control-Allow-Origin' : '*'
+      'Access-Control-Allow-Origin': '*',
     },
-    port: 8080
+    port: 8080,
   },
 };

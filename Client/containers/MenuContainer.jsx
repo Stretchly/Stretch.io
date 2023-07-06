@@ -17,20 +17,25 @@ import * as actions from '../actionCreator/actionCreator.js';
 const MenuContainer = (prop) => {
   const dispatch = useDispatch();
 
-    const refreshExercises = async () => {
-      const muscle = document.getElementById('muscle').value;
-      const difficulty = document.getElementById('difficulty').value;
-      await fetch(
-        `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
-      )
-        .then(data => data.json())
-        .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
-        .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
-    };
+  const refreshExercises = async () => {
+    const muscle = document.getElementById('muscle').value;
+    const difficulty = document.getElementById('difficulty').value;
+    await fetch(
+      `http://localhost:3000/api?muscle=${muscle}&difficulty=${difficulty}&type=stretching`
+    )
+      .then((data) => data.json())
+      .then((data) => dispatch(actions.updateExercisesFromAPI(data)))
+      .catch((error) => console.log('Error in MenuContainer.jsx fetch', error));
+  };
 
   return (
     <div>
-      <select className="muscle" id="muscle" onChange={() => refreshExercises()}>
+      <select
+        className="muscle"
+        id="muscle"
+        onChange={() => refreshExercises()}
+      >
+        <option value="select">Select</option>
         <option value="abdominals">Abdominals</option>
         <option value="abductors">Abductors</option>
         <option value="adductors">Adductors</option>
