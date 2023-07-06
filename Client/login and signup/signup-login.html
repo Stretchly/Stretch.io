@@ -17,6 +17,10 @@
         // document.getElementById("my-div").style.backgroundColor = "whtesmoke";
         console.log(fileContents);
       }
+      function SignUp() {
+        password1 = document.getElementByID('signup-pw').value;
+        password2 = document.getElementByID('');
+      }
     </script>
 
     <!-- website header and nav bar -->
@@ -30,7 +34,7 @@
       <input type="text" id="email" /><br /><br />
       <label for="password">Password:</label>
       <input type="text" id="login-pw" name="pw" /><br /><br />
-      <button className="loginBtn" onClick="printMe()">Log in</button>
+      <button onClick="printMe()">Log in</button>
     </form>
     <!-- signup form -->
     <form id="signup">
@@ -39,7 +43,7 @@
       <label for="password">Password:</label>
       <input type="text" id="signup-pw" name="pw" />
       <label for="password">Confirm Password:</label>
-      <input type="text" id="signup-pw" name="pw" /><br /><br />
+      <input type="text" id="confirm-pw" name="password confirm" /><br /><br />
       <button onClick="printMe()">Sign up</button>
     </form>
     <br />

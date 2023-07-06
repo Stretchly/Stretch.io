@@ -11,16 +11,15 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const path = require("path");
-const controller = require("./controller/ExerciseController.js");
-const startServer = require("./database/dbConnection.js");
-const userController = require("./controller/UserController.js");
-const cors = require('cors')
+const path = require('path');
+const controller = require('./controller/ExerciseController.js');
+const startServer = require('./database/dbConnection.js');
+const userController = require('./controller/UserController.js');
+const cors = require('cors');
 
 const PORT = 3000;
 
 app.use(express.json());
-app.use(cors());
 app.use(cors());
 // if you ever have a form on your frontend, express.urlencoded
 app.use(express.urlencoded({ extended: true })); // this will be helpful for stringifying a form req from an .html file
@@ -34,10 +33,25 @@ app.use(express.urlencoded({ extended: true })); // this will be helpful for str
 // const stretchRouter = express.Router();
 startServer();
 
-// to create user into database // takes in body // username, password
+// respond to get request ot root wiht html for welcome screen
+app.get('/', (req, res) => {
+  return res
+    .status(200)
+    .sendFile(
+      path.resolve(__dirname, '../Client/login and signup/signup-login.html')
+    );
+});
 
+app.get('/landingpage', (req, res) => {
+  return res
+    .status(200)
+    .sendFile(
+      path.resolve(__dirname, '../Client/login and signup/WelcomeScreen.html')
+    );
+});
+
+// to create user into database // takes in body // username, password
 app.post('/user', userController.registerUser, (req, res) => {
-  console.log();
   return res.status(200).json(res.locals.registeredUser);
 });
 
@@ -50,7 +64,7 @@ app.delete('/user', userController.deleteUser, (req, res) =>
 // get user from database
 
 // to authenticate user based on input username and password
-app.get('/login', userController.authUser, (req, res) => {
+app.post('/login', userController.authUser, (req, res) => {
   return res.status(202).json(res.locals.user);
 });
 
@@ -91,4 +105,4 @@ app.use((err, req, res, next) => {
 
 // listener
 
-app.listen(PORT, () => console.log(`listening on ${PORT}`));
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));

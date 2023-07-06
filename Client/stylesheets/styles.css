@@ -29,6 +29,19 @@
   border: 2px solid #fff;
 }
 
+#overlay {
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  z-index: 2;
+  cursor: pointer;
+}
 /* 
 #6b68e7
 #d1b1f9

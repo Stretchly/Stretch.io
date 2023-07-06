@@ -13,13 +13,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        // test: /\.jsx?/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         //at this point install these: npm install -D babel-loader @babel/core @babel/preset-env @babel/preset-react
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-syntax-jsx'],
           },
         },
       },

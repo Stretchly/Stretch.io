@@ -17,6 +17,10 @@ import Stretch from '../components/Stretch.jsx';
 // can pass in props and prop drill if you want
 const StretchContainer = () => {
   const stretchList = useSelector((state) => state.stretch.exercisesFromAPI);
+  const muscle = useSelector((state) => state.stretch.muscle);
+  const difficulty = useSelector((state) => state.stretch.difficulty);
+  // const muscle = document.getElementById('muscle').value;
+  // const difficulty = document.getElementById('difficulty').value;
 
   const stretchArr = [];
 
@@ -25,9 +29,24 @@ const StretchContainer = () => {
       const item = stretchList[i];
       stretchArr.push(<Stretch exercises={item} />);
     }
+    return <div className="stretchCont">{stretchArr}</div>;
   }
 
-  return <div className="stretchCont">{stretchArr}</div>;
+  if (!muscle === 'null' || !difficulty === 'null') {
+    return (
+      <div>
+        <p>Please select a muscle group and difficulty</p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <p>
+        No {difficulty} {muscle} exercises found!
+      </p>
+    </div>
+  );
 };
 
 export default StretchContainer;
