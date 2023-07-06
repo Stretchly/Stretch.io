@@ -97,6 +97,29 @@ userController.addFavorite = async (req, res, next) => {
   return next();
 };
 
+//Remove a favorite
+userController.deleteFavorite = async (req, res, next) => {
+  const { username, favorite } = req.body;
+  console.log('entering delete favorite middleware');
+
+  try {
+    await User.findOneAndUpdate(
+      { username: username },
+      { $pull: { favorites: favorite } },
+      { new: true }
+    ).then((updatedUser) => {
+      res.locals.updatedUserDeletedFavorite = updatedUser;
+    })
+  } catch (err) {
+    return next({
+      status: 401,
+      log: "error in addFavorite middleware",
+      error: err,
+    });
+  }
+  return next();
+};
+
 // find a user
 // mostly for  testing deletion
 // username must be passed in request body
