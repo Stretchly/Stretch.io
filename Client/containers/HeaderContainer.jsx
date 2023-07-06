@@ -1,24 +1,32 @@
-import React from 'react';
-import '../styles.css';
+/**
+ * ************************************
+ *
+ * @module Header
+ * @author Eivind Del Fierro, Morah Geist
+ * @date 07/2023
+ * @description header feature on main page of app
+ *
+ * ************************************
+ */
 
-{
-  /* This is the HeaderContainer in Client/containers/HeaderContainer.jsx */
-}
+import React from 'react';
+import * as actions from '../actionCreator/actionCreator.js';
+import { useDispatch } from 'react-redux';
 
 const HeaderContainer = () => {
-  // insert any logic for the HeaderContainer here
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(actions.updateUSER_LOG_OFF());
+    document.getElementById('overlay').style.display = 'block';
+  };
+
   return (
-    <div id='navBar'>
-      <header>
-        <h1>Ready to get your stretch on?</h1>
-      </header>
-      <div id='flex-item'></div>
-      <div id='flex-item'>
-        <p>Stretch.io</p>
-      </div>
-      <div id='flex-item'>
-        <p>Sign Up / Log in</p>
-      </div>
+    <div className='appHeaderBox'>
+      <h4 className='mainHeader'>Stretch</h4>
+      <button onClick={logoutHandler} className='logoutBtn'>
+        Logout
+      </button>
     </div>
   );
 };
