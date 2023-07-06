@@ -147,6 +147,7 @@ li:last-child {
 }
 
 #overlay {
+  transition: opacity 1s linear;
   position: fixed;
   display: block;
   width: 100%;
@@ -157,6 +158,7 @@ li:last-child {
   bottom: 0;
   background-color: $dark;
   z-index: 2;
+
 }
 #usernameLogin,
 #passwordLogin,
