@@ -10,13 +10,12 @@
  */
 
 import React from 'react';
-//import { ReactCountdownClock } from 'react-countdown-clock';
+// import { ReactCountdownClock } from 'react-countdown-clock';
 
 // const TimerContainer = (prop) => {
-//   // return <ReactCountdownClock seconds={60}
-//   // color="#000"
-//   // alpha={0.9}
-//   // size={300} />;
+//   return (
+//     <ReactCountdownClock seconds={60} color="#000" alpha={0.9} size={300} />
+//   );
 // };
 
 // export default TimerContainer;
