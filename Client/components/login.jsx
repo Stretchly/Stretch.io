@@ -40,7 +40,7 @@ const login = () => {
   };
 
   return (
-    <div>
+    <div className="loginDiv">
       <form>
         <input type='text' id='usernameLogin' placeholder='Username'></input>
         <input
@@ -48,7 +48,9 @@ const login = () => {
           id='passwordLogin'
           placeholder='Password'
         ></input>
-        <button onClick={(event) => loginFunc(event)}>Login</button>
+        <button className="loginBtn" onClick={(event) => loginFunc(event)}>
+          Login
+        </button>
       </form>
     </div>
   );
