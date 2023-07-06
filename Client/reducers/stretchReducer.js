@@ -56,7 +56,7 @@ const stretchReducer = (state = initialState, action) => {
       fetch('http://localhost:3000/user/favorite', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username: state.loggedInUser, favorites: 'array of favorites?'}),
+        body: JSON.stringify({username: state.loggedInUser, favorite: action.payload}),
       })
         .then((data) => data.json())
         .then( data => {
@@ -69,7 +69,7 @@ const stretchReducer = (state = initialState, action) => {
       fetch('http://localhost:3000/user/favorite', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username: state.loggedInUser, favorites: 'array of favorites?'}),
+        body: JSON.stringify({username: state.loggedInUser, favorite: action.payload}),
       })
         .then((data) => data.json())
         .then( data => {

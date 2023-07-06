@@ -21,11 +21,13 @@ import * as actions from '../actionCreator/actionCreator.js'
 const Stretch = (props) => {
   props = props.exercises;
   const dispatch = useDispatch();
+  const state = useSelector( state => state.stretch)
   // insert any logic for the Stretch here
   let FavIcon;
 
   const favClicked = () => {
-    const userFavorites = useSelector( state => state.stretch.favorites)
+    
+    const userFavorites = state.favorites
 
     if (userFavorites.includes(props)) {
       return dispatch(actions.updateREMOVE_FAVORITE(props))
@@ -43,7 +45,7 @@ const Stretch = (props) => {
         <h3 className="cardHeader">{props.name}</h3>
         {/* need logic to make Fav Icon then comment this back in and delete other */}
         <span className="favIcon">
-          <FAIcon onClick={favClicked()} icon={regStar} />
+          <FAIcon onClick={favClicked} icon={regStar} />
         </span>
       </div>
       <ul>
