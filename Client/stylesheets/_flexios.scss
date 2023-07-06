@@ -102,6 +102,7 @@ li:last-child {
   margin-bottom: 10px;
 }
 #overlay {
+  transition: opacity 1s linear;
   position: fixed;
   display: block;
   width: 100%;
@@ -112,5 +113,5 @@ li:last-child {
   bottom: 0;
   background-color: black;
   z-index: 2;
-  // cursor: pointer;
+  opacity: 1;
 }
