@@ -41,6 +41,34 @@ const stretchReducer = (state = initialState, action) => {
       const [muscle, difficulty] = action.payload;
       return {...state, muscle:muscle, difficulty,difficulty}
     }
+
+    case types.ADD_FAVORITE: {
+      // communicate with the server
+      fetch('http://localhost:3000/user/favorite', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({username: state.loggedInUser, favorites: 'array of favorites?'}),
+      })
+        .then((data) => data.json())
+        .then( data => {
+          return {...state, favorites: data.favorites}
+        })
+        .catch( error => console.log('Error while adding favorites'))
+    }
+
+    case types.REMOVE_FAVORITE: {
+      fetch('http://localhost:3000/user/favorite', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({username: state.loggedInUser, favorites: 'array of favorites?'}),
+      })
+        .then((data) => data.json())
+        .then( data => {
+          return {...state, favorites: data.favorites}
+        })
+        .catch( error => console.log('Error while removing favorites'))
+    }
+
     default:
       return state;
   }

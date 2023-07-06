@@ -19,3 +19,13 @@ export const updateDifficultyAndMuscle = ([muscle, difficulty]) => ({
   type: types.UPDATE_MUSCLE_DIFFICULTY,
   payload: [muscle, difficulty]
 })
+
+export const updateADD_FAVORITE = (obj) => ({
+  type: types.ADD_FAVORITE,
+  payload: obj
+})
+
+export const updateREMOVE_FAVORITE = (obj) => ({
+  type: types.REMOVE_FAVORITE,
+  payload: obj
+})
