@@ -1,9 +1,12 @@
-@import url('https://fonts.cdnfonts.com/css/geomanist');
+@import url('https://fonts.cdnfonts.com/css/oak-sans');
 
 * {
   margin: none;
   padding: none;
-  font-family: 'Geomanist', sans-serif;
+  font-family: 'Oak Sans', sans-serif;
+}
+strong {
+  font-weight: 600;
 }
 
 /* containers */
@@ -26,7 +29,43 @@
 }
 .mainHeader {
   font-size: 30px;
+  font-weight: 600;
   color: $darker;
+}
+.overlay {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  padding-top: 40%;
+}
+.overlayDiv {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $darker;
+  padding: 25px;
+  border-radius: 10px;
+  max-height: 50%;
+  vertical-align: middle;
+}
+.loginDiv,
+.signupDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.welcomeHead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $lightest;
 }
 /* dropdown menu */
 .muscle,
@@ -53,6 +92,7 @@
 }
 .favIcon {
   margin-left: 20px;
+  margin-right: 10px;
 }
 ul {
   list-style-type: none;
@@ -90,7 +130,9 @@ li:last-child {
   touch-action: manipulation;
   max-height: 40px;
 }
-.favBtn {
+.favBtn,
+.loginBtn,
+.signupBtn {
   background-color: $light;
   color: $darker;
   padding: 10px;
@@ -101,6 +143,11 @@ li:last-child {
   margin-right: 5px;
   margin-bottom: 10px;
 }
+.loginBtn,
+.signupBtn {
+  width: 100%;
+}
+
 #overlay {
   position: fixed;
   display: block;
@@ -110,7 +157,22 @@ li:last-child {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: black;
+  background-color: $dark;
   z-index: 2;
-  cursor: pointer;
+}
+#usernameLogin,
+#passwordLogin,
+#usernameSignup,
+#passwordSignup,
+#passwordSignupConfirm {
+  margin-bottom: 5px;
+  display: flex;
+  background-color: $lightest;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

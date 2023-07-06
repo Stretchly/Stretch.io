@@ -34,7 +34,7 @@ const signup = () => {
   };
 
   return (
-    <div>
+    <div className="signupDiv">
       <form>
         <input type="text" id="usernameSignup" placeholder="Username"></input>
         <input
@@ -47,7 +47,9 @@ const signup = () => {
           id="passwordSignupConfirm"
           placeholder="Confirm Password"
         ></input>
-        <button onClick={(event) => signupFunc(event)}>Sign Up</button>
+        <button className="signupBtn" onClick={(event) => signupFunc(event)}>
+          Sign Up
+        </button>
       </form>
     </div>
   );
