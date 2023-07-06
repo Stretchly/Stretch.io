@@ -66,6 +66,9 @@ const MenuContainer = (prop) => {
         <option value="intermediate">Intermediate</option>
         <option value="expert">Expert</option>
       </select>
+      <select className="favorites">
+        <option value="null">Favorites</option>
+      </select>
     </div>
   );
 };

@@ -11,6 +11,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LabeledText from './LabeledText.jsx';
 import { FontAwesomeIcon as FAIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regStar } from '@fortawesome/free-regular-svg-icons';
@@ -36,23 +37,26 @@ const Stretch = (props) => {
   //   <FAIcon onClick={() => props.favClicked(id)} icon={regStar} />
   // </span>;
   //   );
+
   // return stretch component with passed-in props from query to server
   return (
     <div className="stretchCard">
-      <h3>{props.name}</h3>
-      {/* need logic to make Fav Icon then comment this back in and delete other */}
-      <span className="favIcon">
-        <FAIcon onClick={() => props.favClicked(id)} icon={regStar} />
-      </span>
+      <div className="cardHeadBox">
+        <h3 className="cardHeader">{props.name}</h3>
+        {/* need logic to make Fav Icon then comment this back in and delete other */}
+        <span className="favIcon">
+          <FAIcon onClick={() => props.favClicked(id)} icon={regStar} />
+        </span>
+      </div>
       <ul>
         <li>
-          <strong>Equipment:</strong> {props.equipment}
+          <LabeledText label="Equipment" text={props.equipment} />
         </li>
         <li>
-          <strong>Difficulty:</strong> {props.difficulty}
+          <LabeledText label="Difficulty" text={props.difficulty} />
         </li>
         <li>
-          <strong>Instructions:</strong> {props.instructions}
+          <LabeledText label="Instructions" text={props.instructions} />
         </li>
       </ul>
     </div>
